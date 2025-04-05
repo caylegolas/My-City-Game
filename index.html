@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+        <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
     </head>
     <body>
         <a-scene>
@@ -12,31 +12,33 @@
             <a-camera id="camera" fov="90" look-controls="pointerLockEnabled: true" wasd-controls="acceleration: 10">
                 <a-cursor></a-cursor>
             </a-camera>
-
+            <a-sky color="#87CEEB"></a-sky>
+            <a-box color="red" position="0 1.6 0"></a-box>
             <a-box id="grass" posision="0 0 0" width="100000" height="1.6" depth="100000"
              src="https://codehs.com/uploads/3cafb38b6f5430f05baa64008457e05c" repeat="50000 50000"
              material="roughness: 1; metalness: 0; envMap: null;"></a-box>
             <script>
                 let player = document.querySelector("#player");
                 let camera = document.querySelector("#camera");
-                let preventDefaultLoop = 0;
                 let squatSpeed = 3;
                 let squatPosition = 1.2;
                 let normalSpeed = 10;  // Walking speed
-                let sprintSpeed = 40;  // Sprinting speed
-                while (preventDefaultLoop == 0) {
-                    event.preventDefault();
-                }
+                let sprintSpeed = normalSpeed*4;  // Sprinting speed
+
         document.addEventListener("keydown", (event) => {
             if (event.key === "Shift") {
                 player.setAttribute("wasd-controls", "acceleration: " + sprintSpeed);
                 camera.setAttribute("wasd-controls", "acceleration: " + sprintSpeed);
             }
-            if (event.key === "Control") {
+            if (event.key === "c") {
                 player.setAttribute('position', '0 1.2 0'); // First-person camera position
                 camera.setAttribute('position', '0 1.2 0'); // First-person camera position
                 player.setAttribute("wasd-controls", "acceleration: " + squatSpeed);
                 camera.setAttribute("wasd-controls", "acceleration: " + squatSpeed);
+            }
+            if (event.key === "r") {
+                player.setAttribute('position', '0 1.6 0');
+                camera.setAttribute('position', '0 1.6 0');
             }
         });
 
@@ -45,12 +47,13 @@
                 player.setAttribute("wasd-controls", "acceleration: " + normalSpeed);
                 camera.setAttribute("wasd-controls", "acceleration: " + normalSpeed);
             }
-            if (event.key === "Control") {
+            if (event.key === "c") {
                 player.setAttribute("wasd-controls", "acceleration: " + normalSpeed);
                 camera.setAttribute("wasd-controls", "acceleration: " + normalSpeed);
                 player.setAttribute('position', '0 1.6 0'); // First-person camera position
                 camera.setAttribute('position', '0 1.6 0'); // First-person camera position
             }
+        });
             </script>
         </a-scene>
     </body>
