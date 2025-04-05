@@ -19,6 +19,7 @@
             <script>
                 let player = document.querySelector("#player");
                 let camera = document.querySelector("#camera");
+                let controlDown = false;
                 let squatSpeed = 3;
                 let squatPosition = 1.2;
                 let normalSpeed = 10;  // Walking speed
@@ -34,6 +35,12 @@
                 camera.setAttribute('position', '0 1.2 0'); // First-person camera position
                 player.setAttribute("wasd-controls", "acceleration: " + squatSpeed);
                 camera.setAttribute("wasd-controls", "acceleration: " + squatSpeed);
+                controlDown = true;
+            }
+            if (event.key === "W") {
+                if (controlDown == true) {
+                    event.preventDefault();
+                }
             }
         });
 
@@ -47,13 +54,8 @@
                 camera.setAttribute("wasd-controls", "acceleration: " + normalSpeed);
                 player.setAttribute('position', '0 1.6 0'); // First-person camera position
                 camera.setAttribute('position', '0 1.6 0'); // First-person camera position
+                controlDown = false;
             }
-            if (event.ctrlKey && event.key === 'w') {
-        event.preventDefault(); // Try to stop the tab from closing
-        console.log("Ctrl+W was pressed, but prevented.");
-        // You can also trigger some in-game behavior here if needed
-    }
-        });
             </script>
         </a-scene>
     </body>
