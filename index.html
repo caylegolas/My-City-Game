@@ -19,11 +19,14 @@
             <script>
                 let player = document.querySelector("#player");
                 let camera = document.querySelector("#camera");
+                let preventDefaultLoop = 0;
                 let squatSpeed = 3;
                 let squatPosition = 1.2;
                 let normalSpeed = 10;  // Walking speed
                 let sprintSpeed = 40;  // Sprinting speed
-
+                while (preventDefaultLoop == 0) {
+                    event.preventDefault();
+                }
         document.addEventListener("keydown", (event) => {
             if (event.key === "Shift") {
                 player.setAttribute("wasd-controls", "acceleration: " + sprintSpeed);
@@ -35,7 +38,6 @@
                 player.setAttribute("wasd-controls", "acceleration: " + squatSpeed);
                 camera.setAttribute("wasd-controls", "acceleration: " + squatSpeed);
             }
-            event.preventDefault();
         });
 
         document.addEventListener("keyup", (event) => {
@@ -49,7 +51,6 @@
                 player.setAttribute('position', '0 1.6 0'); // First-person camera position
                 camera.setAttribute('position', '0 1.6 0'); // First-person camera position
             }
-            event.preventDefault();
             </script>
         </a-scene>
     </body>
