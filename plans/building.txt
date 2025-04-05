@@ -1,0 +1,2 @@
+make a list of x, y, and z positions in an array and when the player moves, move them back based on wether
+or not the movement needs to be x y or z which will be put as a value in the array for each item
