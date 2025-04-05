@@ -48,6 +48,11 @@
                 player.setAttribute('position', '0 1.6 0'); // First-person camera position
                 camera.setAttribute('position', '0 1.6 0'); // First-person camera position
             }
+            if (event.ctrlKey && event.key === 'w') {
+        event.preventDefault(); // Try to stop the tab from closing
+        console.log("Ctrl+W was pressed, but prevented.");
+        // You can also trigger some in-game behavior here if needed
+    }
         });
             </script>
         </a-scene>
